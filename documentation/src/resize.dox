@@ -189,9 +189,10 @@ It might take some thought to achieve exactly what you want and
 sometimes it is necessary to introduce parallel hierarchies in
 order to get widgets in different groups to resize together.
 
-Imagine you have a "table" containing a group of widgets in a row,
-and you want the middle widget to stay the same size when the
-group or row of widgets is resized.
+Imagine you have a group containing three widgets in a row,
+and you want the widget in the middle to stay the same size
+when the group is stretched and the ones on either side and
+the padding between them to resize symmetrically.
 As described earlier, the default resizing behavior for a group
 results in proportional resizing of the child widgets (and also
 of the margins and padding between them) as shown below, which
@@ -200,11 +201,14 @@ is clearly not what you want.
 \image html resize-example5a.png "Figure 6.8: Resizing a row of widgets (a)"
 \image latex resize-example5a.png "Resizing a row of widgets (a)" width=12cm
 
+Simply adding a group around A and B and setting its \p resizable
+to A, as in the previous btn-input example, will mean that B stays
+the same size, but the other widgets won't resize symmetrically,
+so what else is needed?
 It isn't immediately obvious how to solve this problem, even for
 experienced FLTK users.
 This is possibly because users are generally advised to design
-widgets so that they don't overlap and hijack each other's events
-by mistake.
+widgets so that they don't overlap.
 
 Albrecht Schlosser proposed an innovative technique that involves
 an invisible box that deliberately overlaps others to achieve the
